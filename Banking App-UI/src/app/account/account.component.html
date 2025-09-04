@@ -1,0 +1,94 @@
+<div class="account-container">
+  <h2>Create Bank Account</h2>
+
+  <form (ngSubmit)="saveAccount()" #accountForm="ngForm" class="account-form">
+    <div>
+      <label>Customer ID:</label>
+      <input type="number" [(ngModel)]="newAccount.customerId" name="customerId" required />
+    </div>
+
+    <div>
+      <label>User Name:</label>
+      <input type="text" [(ngModel)]="newAccount.userName" name="userName" required />
+    </div>
+
+    <div>
+      <label>PAN Card:</label>
+      <input type="text" [(ngModel)]="newAccount.panCardNumber" name="panCardNumber" />
+    </div>
+
+    <div>
+      <label>Aadhar Card:</label>
+      <input type="text" [(ngModel)]="newAccount.aadharCardNumber" name="aadharCardNumber" />
+    </div>
+
+    <div>
+      <label>Bank Account Number:</label>
+      <input type="text" [(ngModel)]="newAccount.bankAccountNumber" name="bankAccountNumber" />
+    </div>
+
+    <div>
+      <label>Account Type:</label>
+      <select [(ngModel)]="newAccount.accountType" name="accountType">
+        <option value="">Select</option>
+        <option value="Saving">Saving</option>
+        <option value="Current">Current</option>
+        <option value="Fixed Deposit">Fixed Deposit</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Password:</label>
+      <input type="password" [(ngModel)]="newAccount.password" name="password" />
+    </div>
+
+    <div>
+      <label>Balance:</label>
+      <input type="number" [(ngModel)]="newAccount.balance" name="balance" />
+    </div>
+
+    <div>
+      <label>Loan:</label>
+      <input type="number" [(ngModel)]="newAccount.loan" name="loan" />
+    </div>
+
+    <div>
+      <label>Address:</label>
+      <input type="text" [(ngModel)]="newAccount.address" name="address" />
+    </div>
+
+    <button type="submit">Save Account</button>
+  </form>
+
+  <hr />
+
+  <h3>Accounts List</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Customer ID</th>
+        <th>User Name</th>
+        <th>PAN</th>
+        <th>Aadhar</th>
+        <th>Bank Acc#</th>
+        <th>Type</th>
+        <th>Balance</th>
+        <th>Loan</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of accounts">
+        <td>{{ a.customerId }}</td>
+        <td>{{ a.userName }}</td>
+        <td>{{ a.panCardNumber }}</td>
+        <td>{{ a.aadharCardNumber }}</td>
+        <td>{{ a.bankAccountNumber }}</td>
+        <td>{{ a.accountType }}</td>
+        <td>{{ a.balance }}</td>
+        <td>{{ a.loan }}</td>
+        <td>{{ a.address }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

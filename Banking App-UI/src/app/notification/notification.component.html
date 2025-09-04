@@ -1,0 +1,51 @@
+<h2>Notification</h2>
+
+<form (ngSubmit)="saveNotification()">
+  <div>
+    <label>User Email:</label>
+    <input type="email" [(ngModel)]="newNotification.userEmail" name="userEmail" required />
+  </div>
+
+  <div>
+    <label>Amount:</label>
+    <input type="number" [(ngModel)]="newNotification.amount" name="amount" required />
+  </div>
+
+  <div>
+    <label>Status:</label>
+    <select [(ngModel)]="newNotification.status" name="status" required>
+      <option value="SUCCESS">SUCCESS</option>
+      <option value="FAILED">FAILED</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Message:</label>
+    <textarea [(ngModel)]="newNotification.message" name="message" required></textarea>
+  </div>
+
+  <button type="submit">Save Notification</button>
+</form>
+
+<hr />
+
+<h3>Notification List</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>User Email</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let note of notifications">
+      <td>{{ note.userEmail }}</td>
+      <td>{{ note.amount }}</td>
+      <td>{{ note.status }}</td>
+      <td>{{ note.message }}</td>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Audit Records</h2>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <table *ngIf="!loading && auditRecords.length > 0" class="audit-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Sender</th>
+        <th>Receiver</th>
+        <th>Amount</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of auditRecords">
+        <td>{{ record.id }}</td>
+        <td>{{ record.senderName }}</td>
+        <td>{{ record.receiverName }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="!loading && auditRecords.length === 0" class="no-data">
+    No audit records found.
+  </div>
+</div>

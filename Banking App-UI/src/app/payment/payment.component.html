@@ -1,0 +1,46 @@
+<div class="payment-container">
+  <h2>Make a Payment</h2>
+
+  <form (ngSubmit)="processPayment()" #paymentForm="ngForm" class="payment-form">
+    <div>
+      <label>Email:</label>
+      <input type="email" [(ngModel)]="newPayment.userEmail" name="userEmail" required />
+    </div>
+
+    <div>
+      <label>Amount:</label>
+      <input type="number" [(ngModel)]="newPayment.amount" name="amount" required />
+    </div>
+
+    <button type="submit">Pay Now</button>
+  </form>
+
+  <div *ngIf="paymentResponse">
+    <h4>Payment Status</h4>
+    <p>Status: {{ paymentResponse.status }}</p>
+    <p>Message: {{ paymentResponse.message }}</p>
+  </div>
+
+  <hr />
+
+  <h3>Previous Payments</h3>
+  <table *ngIf="payments.length > 0">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of payments">
+        <td>{{ p.userEmail }}</td>
+        <td>{{ p.amount }}</td>
+        <td>{{ p.status }}</td>
+        <td>{{ p.message }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
